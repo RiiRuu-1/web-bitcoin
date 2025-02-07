@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Crypto & Bitcoin khabar</title>
+    <style>
+        /* Gaya Dasar */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #20232a;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #61dafb;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #61dafb;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, #20232a, #0a0a0a);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        header h2 {
+            font-size: 48px;
+            margin: 0;
+            color: #61dafb;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        /* Slideshow */
+        .slideshow {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            margin: 40px 0;
+        }
+
+        .slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .slideshow img.active {
+            opacity: 1;
+        }
+
+        /* Tentang Kami */
+        .about {
+            background-color: #20232a;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .about h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #61dafb;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        /* Layanan Kami */
+        .services {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .services h3 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #61dafb;
+        }
+
+        .services .service-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .services .service {
+            background-color: #20232a;
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%;
+            margin: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .services .service:hover {
+            transform: translateY(-10px);
+        }
+
+        .services .service h4 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #61dafb;
+        }
+
+        .services .service p {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        /* Testimoni */
+        .testimonials {
+            background-color: #20232a;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .testimonials h3 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #61dafb;
+        }
+
+        .testimonials .testimonial-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .testimonials .testimonial {
+            background-color: #0a0a0a;
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%;
+            margin: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonials .testimonial p {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .testimonials .testimonial h4 {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #61dafb;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        footer .social-media {
+            margin-top: 20px;
+        }
+
+        footer .social-media a {
+            color: #61dafb;
+            margin: 0 10px;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-media a:hover {
+            color: #fff;
+        }
+
+        /* Tombol Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #61dafb;
+            color: #0a0a0a;
+            padding: 10px 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 20px;
+            display: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #4fa8c7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <h1>Toko Crypto & Bitcoin</h1>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <h2>Selamat Datang di Toko Crypto & Bitcoin terpecaya di Budiniah</h2>
+        <p>Investasikan masa depan anda dengan teknologi blockchain.</p>
+    </header>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <img src="https://img.plasbit.com/blog/where-can-I-sell-my-Bitcoin-for-cash.jpg" alt="Slide 1" class="active">
+        <img src="C:\Users\computer\Downloads\pexels-tima-miroshnichenko-7567550.jpg" alt="Slide 2">
+        <img src="C:\Users\computer\Downloads\pexels-alesiakozik-6770774.jpg" alt="Slide 3">
+    </div>
+
+    <!-- Tentang Kami -->
+    <section class="about" id="about">
+        <h3>Tentang Kami</h3>
+        <p>Kami adalah platform terpercaya untuk investasi crypto dan Bitcoin. Dengan teknologi blockchain terbaru, kami memastikan keamanan dan kenyamanan transaksi Anda.</p>
+    </section>
+
+    <!-- Layanan Kami -->
+    <section class="services" id="services">
+        <h3>Layanan Kami</h3>
+        <div class="service-list">
+            <div class="service">
+                <h4>Bitcoin Trading</h4>
+                <p>Beli dan jual Bitcoin dengan harga terbaik.</p>
+            </div>
+            <div class="service">
+                <h4>Ethereum Wallet</h4>
+                <p>Simpan dan kelola Ethereum dengan aman.</p>
+            </div>
+            <div class="service">
+                <h4>Blockchain Consulting</h4>
+                <p>Konsultasi pengembangan teknologi blockchain.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="testimonials" id="testimonials">
+        <h3>Testimoni Pelanggan</h3>
+        <div class="testimonial-list">
+            <div class="testimonial">
+                <p>"Pelayanan sangat cepat dan profesional!"</p>
+                <h4>- yogi</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Platform yang mudah digunakan dan aman."</p>
+                <h4>- farel</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Saya sangat puas dengan layanan mereka."</p>
+                <h4>- raka ucay</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Dibuat oleh : Khairil Rasyid Dan Muhammad Bariji.</p>
+        <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Tombol Back to Top -->
+    <a href="#home" class="back-to-top">↑</a>
+
+    <!-- Script untuk Animasi Slideshow -->
+    <script>
+        const slides = document.querySelectorAll('.slideshow img');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 3000);
+
+        // Tombol Back to Top
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
